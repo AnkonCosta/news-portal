@@ -30,6 +30,12 @@ const loadSpecificCategory = (id) => {
 const displaySpecificCategory = (categories) => {
     // console.log(categories);
 
+    const newsFoundNo = document.getElementById('news-found-no');
+    newsFoundNo.innerHTML = ``;
+    const newsFoundPara = document.createElement('p');
+    newsFoundPara.innerHTML = `${categories.length} news found`;
+    newsFoundNo.appendChild(newsFoundPara)
+
     // no news found on category 
     const categoryNotFound = document.getElementById('category-not-found');
     if (categories.length === 0) {
@@ -45,9 +51,11 @@ const displaySpecificCategory = (categories) => {
     allNewsElement.innerHTML = ``;
     categories.forEach(category => {
         console.log(category);
+
+
         const allNewsDiv = document.createElement('div')
         allNewsDiv.innerHTML = `
-        <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="showDetails()" class="card mb-3">
+        <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="loadDetails('${category._id}')" class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${category.thumbnail_url}" class="img-fluid rounded-start" alt="...">
@@ -58,7 +66,7 @@ const displaySpecificCategory = (categories) => {
                             <p class="card-text pt-5">${category.details.slice(0, 400)}...</p>
                            <div class="d-flex align-items-center justify-content-between">
                            <div class="d-flex">
-                            <img height="25" width="25" class="img-fluid rounded-circle me-2" src="${category.author.img}" alt="">
+                            <img  height="25" width="25" class="img-fluid rounded-circle me-2" src="${category.author.img}" alt="">
                            <div>
                            <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.name}</p>
                            <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.published_date}</p>
@@ -77,21 +85,34 @@ const displaySpecificCategory = (categories) => {
 
         `;
         allNewsElement.appendChild(allNewsDiv)
+
+
     })
+
 
 }
 
-
-// loadSpecificCategory()
-
-
-
-
-// const loadNews = () => {
-//     const url = ``
-// }
+const loadDetails = (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => showDetails(data.data[0]))
+}
 
 
+const showDetails = (category) => {
+    const showTitle = document.getElementById('exampleModalLabel');
+    const showAuthor = document.getElementById('author-id');
+    const showDate = document.getElementById('publish-date-id');
+    const showImg = document.getElementById('img-id');
+    const showPara = document.getElementById('para-id');
+    showTitle.innerText = category.title;
+    showAuthor.innerText = category.author ? category.author.name : 'No author found';
+    showDate.innerText = category.author.published_date;
+    showImg.src = category.image_url;
+    showPara.innerText = category.details;
+    console.log(category);
+}
 
 
 loadCategories()
