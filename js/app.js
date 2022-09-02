@@ -73,8 +73,8 @@ const displaySpecificCategory = (categories) => {
                            <div class="d-flex">
                             <img  height="25" width="25" class="img-fluid rounded-circle me-2" src="${category.author.img}" alt="">
                            <div>
-                           <p id="af" class="card-text fw-semibold"><small class="text-muted"></small>${category.author.name ? category.author.name : 'No author name found'}</p>
-                           <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.published_date}</p>
+                           <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.name ? category.author.name : 'No author name found'}</p>
+                           <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.published_date ? category.author.published_date : 'No date found'}</p>
                            </div>
                            </div>
 
