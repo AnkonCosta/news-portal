@@ -3,6 +3,7 @@ const loadCategories = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayCategory(data.data.news_category))
+        .catch(error => (console.log(error)))
 };
 const displayCategory = (categories) => {
     const displayCategoryElement = document.getElementById('display-categories');
@@ -27,6 +28,7 @@ const loadSpecificCategory = (id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => displaySpecificCategory(data.data))
+        .catch(error => (console.log(error)))
     toggleSpinner(true)
 }
 
@@ -62,7 +64,7 @@ const displaySpecificCategory = (categories) => {
         <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="loadDetails('${category._id}')" class="card mb-3">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${category.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+                        <img src="${category.thumbnail_url}" class="img-fluid rounded-start middle-img" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -102,6 +104,7 @@ const loadDetails = (news_id) => {
     fetch(url)
         .then(res => res.json())
         .then(data => showDetails(data.data[0]))
+        .catch(error => (console.log(error)))
 }
 
 
