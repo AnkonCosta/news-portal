@@ -1,0 +1,9 @@
+.right {
+    margin-left: 70%;
+}
+
+@media only screen and (max-width: 600px) {
+    .right {
+        margin-left: 0%;
+    }
+}

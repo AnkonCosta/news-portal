@@ -88,7 +88,8 @@ const displaySpecificCategory = (categories) => {
             </div>
 
         `;
-        allNewsElement.appendChild(allNewsDiv)
+        allNewsElement.appendChild(allNewsDiv);
+        toggleSpinner(false)
 
     })
 
@@ -119,7 +120,7 @@ const showDetails = (category) => {
 }
 
 const toggleSpinner = (isLoading) => {
-    const toggleSpinnerElement = document.getElementById('spinner-id');
+    const toggleSpinnerElement = document.getElementById('spinner');
     if (isLoading) {
         toggleSpinnerElement.classList.remove('d-none');
     }
