@@ -89,9 +89,9 @@ const displaySpecificCategory = (categories) => {
 
         `;
         allNewsElement.appendChild(allNewsDiv);
-        toggleSpinner(false)
 
     })
+    toggleSpinner(false)
 
 }
 
