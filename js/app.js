@@ -12,6 +12,7 @@ const displayCategory = (categories) => {
         displayCategoryDiv.innerHTML = `
         <a onclick="loadSpecificCategory('${category.category_id}')" class="text-decoration-none" href="#">${category.category_name}s</a>`;
 
+
         displayCategoryElement.appendChild(displayCategoryDiv)
     })
 
@@ -20,11 +21,13 @@ const displayCategory = (categories) => {
 
 
 const loadSpecificCategory = (id) => {
+
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
 
     fetch(url)
         .then(res => res.json())
         .then(data => displaySpecificCategory(data.data))
+    toggleSpinner(true)
 }
 
 const displaySpecificCategory = (categories) => {
@@ -51,6 +54,7 @@ const displaySpecificCategory = (categories) => {
     allNewsElement.innerHTML = ``;
     categories.forEach(category => {
         console.log(category);
+
 
 
         const allNewsDiv = document.createElement('div')
@@ -86,13 +90,13 @@ const displaySpecificCategory = (categories) => {
         `;
         allNewsElement.appendChild(allNewsDiv)
 
-
     })
-
 
 }
 
 const loadDetails = (news_id) => {
+
+
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`
     fetch(url)
         .then(res => res.json())
@@ -112,6 +116,17 @@ const showDetails = (category) => {
     showImg.src = category.image_url;
     showPara.innerText = category.details;
     console.log(category);
+}
+
+const toggleSpinner = (isLoading) => {
+    const toggleSpinnerElement = document.getElementById('spinner-id');
+    if (isLoading) {
+        toggleSpinnerElement.classList.remove('d-none');
+    }
+    else {
+        toggleSpinnerElement.classList.add('d-none');
+
+    }
 }
 
 
