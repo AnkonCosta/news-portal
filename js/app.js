@@ -58,7 +58,6 @@ const displaySpecificCategory = (categories) => {
         console.log(category);
 
 
-
         const allNewsDiv = document.createElement('div')
         allNewsDiv.innerHTML = `
         <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="loadDetails('${category._id}')" class="card mb-3">
@@ -74,7 +73,7 @@ const displaySpecificCategory = (categories) => {
                            <div class="d-flex">
                             <img  height="25" width="25" class="img-fluid rounded-circle me-2" src="${category.author.img}" alt="">
                            <div>
-                           <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.name}</p>
+                           <p id="af" class="card-text fw-semibold"><small class="text-muted"></small>${category.author.name ? category.author.name : 'No author name found'}</p>
                            <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.published_date}</p>
                            </div>
                            </div>
@@ -91,6 +90,12 @@ const displaySpecificCategory = (categories) => {
 
         `;
         allNewsElement.appendChild(allNewsDiv);
+
+        // const faf = document.getElementById('af')
+        // if (category.author.name === 'null') {
+        //     faf.innerText = 'no author name found.'
+        // }
+
 
     })
     toggleSpinner(false)
