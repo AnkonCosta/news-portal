@@ -119,7 +119,7 @@ const showDetails = (category) => {
     const showPara = document.getElementById('para-id');
     showTitle.innerText = category.title;
     showAuthor.innerText = category.author.name ? category.author.name : 'No author found';
-    showDate.innerText = category.author.published_date ? category.author.published_date : 'No publish found';
+    showDate.innerText = category.author.published_date ? category.author.published_date : 'No publish date found';
     showImg.src = category.image_url;
     showPara.innerText = category.details;
     console.log(category);
