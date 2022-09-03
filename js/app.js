@@ -33,7 +33,6 @@ const loadSpecificCategory = (id) => {
 }
 
 const displaySpecificCategory = (categories) => {
-    // console.log(categories);
 
     const newsFoundNo = document.getElementById('news-found-no');
     newsFoundNo.innerHTML = ``;
