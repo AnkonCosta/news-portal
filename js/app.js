@@ -59,8 +59,6 @@ const displaySpecificCategory = (categories) => {
     const allNewsElement = document.getElementById('all-news');
     allNewsElement.innerHTML = ``;
     categories.forEach(category => {
-        console.log(category);
-
 
         const allNewsDiv = document.createElement('div')
         allNewsDiv.innerHTML = `
@@ -117,12 +115,14 @@ const showDetails = (category) => {
     const showDate = document.getElementById('publish-date-id');
     const showImg = document.getElementById('img-id');
     const showPara = document.getElementById('para-id');
+    const showView = document.getElementById('modal-view');
     showTitle.innerText = category.title;
     showAuthor.innerText = category.author.name ? category.author.name : 'No author found';
     showDate.innerText = category.author.published_date ? category.author.published_date : 'No publish date found';
     showImg.src = category.image_url;
     showPara.innerText = category.details;
-    console.log(category);
+    showView.innerText = category.total_view ? category.total_view : 'No data found';
+
 }
 
 const toggleSpinner = (isLoading) => {
