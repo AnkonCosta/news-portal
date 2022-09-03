@@ -1,5 +1,9 @@
 .right {
-    margin-left: 70%;
+    margin-left: 65%;
+}
+
+.bg-color {
+    background-color: #F8F9FA;
 }
 
 
@@ -7,6 +11,7 @@
 @media only screen and (max-width: 600px) {
     .right {
         margin-left: 0%;
+
     }
 
 }

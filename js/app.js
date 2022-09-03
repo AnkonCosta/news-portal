@@ -11,7 +11,7 @@ const displayCategory = (categories) => {
         const displayCategoryDiv = document.createElement('div');
         displayCategoryDiv.classList.add('fw-semibold')
         displayCategoryDiv.innerHTML = `
-        <a onclick="loadSpecificCategory('${category.category_id}')" class="text-decoration-none" href="#">${category.category_name}s</a>`;
+        <a onclick="loadSpecificCategory('${category.category_id}')" class="text-decoration-none text-success" href="#">${category.category_name}s</a>`;
 
 
         displayCategoryElement.appendChild(displayCategoryDiv)
@@ -38,13 +38,15 @@ const displaySpecificCategory = (categories) => {
     const newsFoundNo = document.getElementById('news-found-no');
     newsFoundNo.innerHTML = ``;
     const newsFoundPara = document.createElement('p');
-    newsFoundPara.innerHTML = `${categories.length} news found`;
+    newsFoundPara.innerText = `${categories.length} news found`;
+
     newsFoundNo.appendChild(newsFoundPara)
 
     // no news found on category 
     const categoryNotFound = document.getElementById('category-not-found');
     if (categories.length === 0) {
         categoryNotFound.classList.remove('d-none');
+
     }
     else {
         categoryNotFound.classList.add('d-none');
@@ -60,26 +62,26 @@ const displaySpecificCategory = (categories) => {
 
         const allNewsDiv = document.createElement('div')
         allNewsDiv.innerHTML = `
-        <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="loadDetails('${category._id}')" class="card mb-3">
+        <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="loadDetails('${category._id}')" class="card mb-3 shadow-lg rounded">
                 <div class="row g-0">
                     <div class="col-md-4">
                         <img src="${category.thumbnail_url}" class="img-fluid rounded-start middle-img" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">${category.title}</h5>
-                            <p class="card-text pt-5">${category.details.slice(0, 400)}...</p>
+                            <h5 class="card-title text-success">${category.title}</h5>
+                            <p class="card-text fw-semibold  pt-5">${category.details.slice(0, 400)}...</p>
                            <div class="d-flex align-items-center justify-content-between">
-                           <div class="d-flex">
-                            <img  height="25" width="25" class="img-fluid rounded-circle me-2" src="${category.author.img}" alt="">
-                           <div>
-                           <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.name ? category.author.name : 'No author name found'}</p>
-                           <p class="card-text fw-semibold"><small class="text-muted"></small>${category.author.published_date ? category.author.published_date : 'No date found'}</p>
+                           <div class="d-flex align-items-center justify-content-between">
+                            <img  height="25px" width="25px" class="img-fluid rounded-circle me-2 my-4" src="${category.author.img}" alt="">
+                           <div >
+                           <p class="card-text fw-semibold  text-success"><small class="text-muted"></small>${category.author.name ? category.author.name : 'No author name found'}</p>
+                           
                            </div>
                            </div>
 
-                           <div>
-                           <p>Views: ${category.total_view}</p>
+                           <div class="inline">
+                           <i class="fa-sharp text-success fa-solid fa-eye"> ${category.total_view}</i>
                            </div>
                            </div>
                            
@@ -90,12 +92,6 @@ const displaySpecificCategory = (categories) => {
 
         `;
         allNewsElement.appendChild(allNewsDiv);
-
-        // const faf = document.getElementById('af')
-        // if (category.author.name === 'null') {
-        //     faf.innerText = 'no author name found.'
-        // }
-
 
     })
     toggleSpinner(false)
@@ -120,8 +116,8 @@ const showDetails = (category) => {
     const showImg = document.getElementById('img-id');
     const showPara = document.getElementById('para-id');
     showTitle.innerText = category.title;
-    showAuthor.innerText = category.author ? category.author.name : 'No author found';
-    showDate.innerText = category.author.published_date;
+    showAuthor.innerText = category.author.name ? category.author.name : 'No author found';
+    showDate.innerText = category.author.published_date ? category.author.published_date : 'No publish found';
     showImg.src = category.image_url;
     showPara.innerText = category.details;
     console.log(category);
