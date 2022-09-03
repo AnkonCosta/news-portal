@@ -33,6 +33,9 @@ const loadSpecificCategory = (id) => {
 }
 
 const displaySpecificCategory = (categories) => {
+    categories.sort((a, b) => {
+        return b.total_view - a.total_view;
+    })
 
     const newsFoundNo = document.getElementById('news-found-no');
     newsFoundNo.innerHTML = ``;
