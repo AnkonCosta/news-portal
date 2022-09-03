@@ -67,7 +67,7 @@ const displaySpecificCategory = (categories) => {
         <div data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="loadDetails('${category._id}')" class="card mb-3 shadow-lg rounded">
                 <div class="row g-0">
                     <div class="col-md-4">
-                        <img src="${category.thumbnail_url}" class="img-fluid rounded-start middle-img" alt="...">
+                        <img src="${category.thumbnail_url}" class="img-fluid rounded-start middle-img p-3" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
