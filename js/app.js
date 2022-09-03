@@ -83,7 +83,7 @@ const displaySpecificCategory = (categories) => {
                            </div>
 
                            <div class="inline">
-                           <i class="fa-sharp text-success fa-solid fa-eye"> ${category.total_view}</i>
+                           <i class="fa-sharp text-success fa-solid fa-eye"> ${category.total_view ? category.total_view : 'No data found'}</i>
                            </div>
                            </div>
                            
